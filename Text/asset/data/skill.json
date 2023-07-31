@@ -1,0 +1,18 @@
+{
+	"kick": {
+		"inflict": {
+			"damage": 4
+		}
+	},
+	"punch": {
+		"inflict": {
+			"damage": 4
+		}
+	},
+	"arm block": {
+		"self": {
+			"defense": 4,
+			"dodge": 1
+		}
+	}
+}

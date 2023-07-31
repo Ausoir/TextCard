@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbdu5g722xe7h"]
+
+[ext_resource type="Texture2D" uid="uid://fy1ugshap14v" path="res://asset/icon/plus.svg" id="1_y1t6t"]
+[ext_resource type="Script" path="res://fx/particle.gd" id="2_nn55o"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qvfj2"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="marker" type="GPUParticles2D"]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_qvfj2")
+texture = ExtResource("1_y1t6t")
+one_shot = true
+script = ExtResource("2_nn55o")

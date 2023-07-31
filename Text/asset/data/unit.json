@@ -1,0 +1,11 @@
+{
+	"person": {
+		"breath": 3,
+		"energy": 20,
+		"skills": [
+			"kick",
+			"punch",
+			"arm block"
+		]
+	}
+}

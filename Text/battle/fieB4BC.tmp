@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://1pvobbeviauj"]
+
+[ext_resource type="Script" path="res://battle/field.gd" id="1_e7bp4"]
+[ext_resource type="Texture2D" uid="uid://cc6r6vinrbw4i" path="res://asset/icon/wait.svg" id="2_0h3y7"]
+[ext_resource type="Texture2D" uid="uid://bq8a8ox07g331" path="res://asset/icon/settings.svg" id="2_xf6ru"]
+[ext_resource type="Texture2D" uid="uid://babm4rtp0lgql" path="res://asset/icon/wait_pressed.svg" id="3_1dyty"]
+[ext_resource type="Texture2D" uid="uid://bmbt5cfepmtpq" path="res://asset/icon/examine.svg" id="3_kdyep"]
+[ext_resource type="Texture2D" uid="uid://2bshhvobujfu" path="res://asset/icon/examine_pressed.svg" id="5_uc03v"]
+[ext_resource type="Texture2D" uid="uid://ynkv06pq8fmr" path="res://asset/icon/settings_pressed.svg" id="7_i3khq"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_md6jn"]
+content_margin_bottom = 12.0
+color = Color(0.541176, 0.541176, 0.541176, 1)
+grow_begin = 0.0
+grow_end = -16.0
+thickness = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjlfu"]
+bg_color = Color(0.458824, 0.47451, 0.45098, 1)
+border_width_top = 20
+border_color = Color(0.321569, 0.321569, 0.396078, 1)
+border_blend = true
+corner_radius_top_left = 36
+
+[node name="Field" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e7bp4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "  Targets"
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_md6jn")
+
+[node name="Targets" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "  Allies"
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_md6jn")
+
+[node name="Allies" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Player" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qjlfu")
+horizontal_scroll_mode = 3
+
+[node name="VBox" type="VBoxContainer" parent="Player"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="Control" parent="Player/VBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player/VBox/Header"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 131.0
+offset_bottom = 24.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "  Actions"
+
+[node name="Breath" type="Label" parent="Player/VBox/Header"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -24.0
+offset_right = -36.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.517647, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="Player/VBox"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_md6jn")
+
+[node name="Action" type="GridContainer" parent="Player/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Control" type="Control" parent="Player/VBox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Options" type="HBoxContainer" parent="Player/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Wait" type="TextureButton" parent="Player/VBox/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_0h3y7")
+texture_pressed = ExtResource("3_1dyty")
+stretch_mode = 3
+
+[node name="Examine" type="TextureButton" parent="Player/VBox/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+texture_normal = ExtResource("3_kdyep")
+texture_pressed = ExtResource("5_uc03v")
+stretch_mode = 3
+
+[node name="Menu" type="TextureButton" parent="Player/VBox/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_xf6ru")
+texture_pressed = ExtResource("7_i3khq")
+stretch_mode = 3

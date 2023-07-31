@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=3 uid="uid://c76p0mad0vp2a"]
+
+[ext_resource type="Script" path="res://menu/startmenu.gd" id="1_pnx5c"]
+[ext_resource type="Texture2D" uid="uid://bybrd3wsopgsk" path="res://asset/icon/check.svg" id="2_x4ids"]
+[ext_resource type="Texture2D" uid="uid://d1ser4iycho74" path="res://asset/icon/circle.png" id="4_et2hg"]
+[ext_resource type="Texture2D" uid="uid://cn2gkfx0ln31m" path="res://asset/icon/circle_pressed.png" id="5_a6ubb"]
+[ext_resource type="Texture2D" uid="uid://bq8a8ox07g331" path="res://asset/icon/settings.svg" id="6_trh5d"]
+[ext_resource type="Texture2D" uid="uid://d1vayyl344en8" path="res://asset/icon/arrow_play.svg" id="7_2wyni"]
+
+[sub_resource type="Gradient" id="Gradient_yt2c5"]
+colors = PackedColorArray(1, 1, 1, 0.156863, 1, 1, 1, 0.0392157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fg2xl"]
+gradient = SubResource("Gradient_yt2c5")
+
+[sub_resource type="Curve" id="Curve_36f6o"]
+_data = [Vector2(0, 0), 0.0, 0.0670706, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4o0p7"]
+curve = SubResource("Curve_36f6o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25qww"]
+emission_shape = 3
+emission_box_extents = Vector3(576, 324, 1)
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, -128, 0)
+initial_velocity_max = 48.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.01
+scale_curve = SubResource("CurveTexture_4o0p7")
+color_ramp = SubResource("GradientTexture1D_fg2xl")
+turbulence_influence_min = 1.0
+turbulence_influence_max = 1.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pnx5c")
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.627451, 0.8, 1, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(576, 324)
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_25qww")
+texture = ExtResource("2_x4ids")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -64.0
+offset_right = 240.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 48
+
+[node name="Settings" type="TextureButton" parent="HBox"]
+self_modulate = Color(0.74902, 0.847059, 0.894118, 1)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("4_et2hg")
+texture_pressed = ExtResource("5_a6ubb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_trh5d")
+stretch_mode = 3
+
+[node name="New" type="TextureButton" parent="HBox"]
+self_modulate = Color(0.917647, 0.803922, 0.709804, 1)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("4_et2hg")
+texture_pressed = ExtResource("5_a6ubb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBox/New"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2wyni")
+stretch_mode = 3
+
+[connection signal="pressed" from="HBox/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="HBox/New" to="." method="_on_new_pressed"]

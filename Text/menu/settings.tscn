@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6sps5nhnu7s8"]
+
+[ext_resource type="Script" path="res://menu/settings.gd" id="1_up751"]
+
+[node name="Settings" type="VBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_right = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180, 324)
+mouse_filter = 2
+theme_override_constants/separation = 32
+alignment = 1
+script = ExtResource("1_up751")
+
+[node name="Sound" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Sound"]
+layout_mode = 2
+text = "  Sound  "
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Sound"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Delete Save"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Exit Game"
+
+[connection signal="pressed" from="Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
